@@ -3,12 +3,12 @@ var fs = require('fs');
 var jsonfile = require('jsonfile');
 var moment = require('moment');
 var Twit = require('twit');
+var Converter = require('csvtojson').Converter;
 var twitterConfig = require('./twitter-config');
 
 console.log(Date());
 var Bot = new Twit(twitterConfig);
 
-var Converter = require("csvtojson").Converter;
 var csv = new Converter({});
 
 var doTweet;
