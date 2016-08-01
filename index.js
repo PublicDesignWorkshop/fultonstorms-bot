@@ -12,10 +12,10 @@ var Bot = new Twit(twitterConfig);
 var csv = new Converter({});
 
 var doTweet;
-var obj = JSON.parse(fs.readFileSync('fultonstorms-index.json', 'utf8') || '{}');
+var obj = JSON.parse(fs.readFileSync(__dirname + '/fultonstorms-index.json', 'utf8') || '{}');
 var index = obj.index || 0;
 
-csv.fromFile("./storm.csv", function(err, csvFile) {
+csv.fromFile(__dirname + '/storm.csv', function(err, csvFile) {
 
   if (err) console.error('error reading csv file', err);
 
@@ -41,7 +41,7 @@ csv.fromFile("./storm.csv", function(err, csvFile) {
     });
 
     // save csv index
-    jsonfile.writeFile('fultonstorms-index.json', { 'index': index }, { spaces: 2 }, function(err) {
+    jsonfile.writeFile(__dirname + '/fultonstorms-index.json', { 'index': index }, { spaces: 2 }, function(err) {
       if (err) console.error(err);
     });
 
