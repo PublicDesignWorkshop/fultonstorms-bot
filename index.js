@@ -15,7 +15,9 @@ var doTweet;
 var obj = JSON.parse(fs.readFileSync('fultonstorms-index.json', 'utf8') || '{}');
 var index = obj.index || 0;
 
-csv.fromFile("./storm.csv", function(err,csvFile) {
+csv.fromFile("./storm.csv", function(err, csvFile) {
+
+  if (err) console.error('error reading csv file', err);
 
   doTweet = function() {
 
@@ -44,5 +46,6 @@ csv.fromFile("./storm.csv", function(err,csvFile) {
     });
 
   }
+
   doTweet();
 });
